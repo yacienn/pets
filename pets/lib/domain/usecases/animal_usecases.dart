@@ -1,0 +1,19 @@
+import 'package:pet/domain/entities/animal.dart';
+import 'package:pet/domain/entities/animal_type.dart';
+import 'package:pet/domain/repositories/animal_repo.dart';
+
+class GetRecentAnimalUseCases{
+  final AnimalRepo repo ;
+  GetRecentAnimalUseCases( this.repo); 
+  Future <List<Animal>> call(){
+    return repo.getRecentAnimal();
+  } 
+}
+
+class getAnimalTypeUseCases{
+  final AnimalRepo repo ; 
+  getAnimalTypeUseCases(this.repo);
+  Future<List<AnimalType>> call(){
+    return repo.getAnimalType();
+  }
+}
