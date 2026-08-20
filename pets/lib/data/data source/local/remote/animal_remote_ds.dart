@@ -18,4 +18,14 @@ class AnimalRemoteDs {
       result['animal'],
     );
   }
+
+  Future<List<AnimalModel>> getAllAnimalsFromdb() async {
+  final result = await apiClient.get('/animal');
+
+  final List<dynamic> animals = result['animals'];
+
+  return animals
+      .map((json) => AnimalModel.fromJson(json))
+      .toList();
+}
 }

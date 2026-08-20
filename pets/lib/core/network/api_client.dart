@@ -22,4 +22,23 @@ class ApiClient {
       'Request failed: ${response.statusCode}',
     );
   }
+
+  
+  Future<Map<String, dynamic>> get(String endpoint) async {
+  final response = await http.get(
+    Uri.parse('$baseUrl$endpoint'),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  );
+
+  if (response.statusCode >= 200 &&
+      response.statusCode < 300) {
+    return jsonDecode(response.body);
+  }
+
+  throw Exception(
+    'Request failed: ${response.statusCode} ${response.body}',
+  );
+}
 }
