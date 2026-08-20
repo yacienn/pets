@@ -6,10 +6,7 @@ abstract class AnimalLocalDataSource {
   Future<List<AnimalModel>> getRecentAnimals();
 }
 
-/// Local data source. In this implementation the "raw data" is a hardcoded
-/// list of Maps (standing in for a JSON asset / local DB row), which is
-/// then parsed through Model.fromJson() -- exactly like it would be if this
-/// were reading a bundled .json file or a SQLite query result.
+
 class AnimalLocalDataSourceImpl implements AnimalLocalDataSource {
   static final List<Map<String, dynamic>> animalTypesJson = [
     {'animal_type': 'Cat', 'icon_url': 'assets/pet_icons/cat.png'},
@@ -23,14 +20,14 @@ class AnimalLocalDataSourceImpl implements AnimalLocalDataSource {
   static final List<Map<String, dynamic>> _recentAnimalsJson = [
     {
       'id': '1',
-      'animal_name': 'Gosshii',
-      'animal_type': 'Cat',
+      'name': 'Gosshii',
+      'type': 'Cat',
       'icon_url': 'assets/pet_icons/cat.png',
     },
     {
       'id': '2',
-      'animal_name': 'Gosshii',
-      'animal_type': 'Cat',
+      'name': 'Gosshii',
+      'type': 'Cat',
       'icon_url': 'assets/pet_icons/cat.png',
     },
   ];

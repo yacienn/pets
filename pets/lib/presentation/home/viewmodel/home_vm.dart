@@ -14,10 +14,8 @@ class HomeVm extends ChangeNotifier {
   List<Animal> animal = [];
   Future<void> load() async {
   try {
-    final types = await _getAnimalUseCases();       // ①
-    final recent = await _getRecentAnimalUseCases(); // ②
-    animalType = types;   // ← only runs if ② succeeds
-    animal = recent;
+    animalType = await _getAnimalUseCases();
+    animal = await _getRecentAnimalUseCases();
   } catch (e) {
     print("${e}");
   }
