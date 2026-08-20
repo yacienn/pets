@@ -1,13 +1,8 @@
 import express from "express";
-
+import animalRouters from "../src/router/animal_router.js"
 const app = express();
 
 app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.json({
-    message: "API is running 🚀",
-  });
-});
+app.use("/" , animalRouters);
 
 export default app;
