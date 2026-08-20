@@ -1,4 +1,4 @@
-import 'package:pet/data/data%20source/local/animal_local_ds.dart';
+import 'package:pet/data/data%20source/local/local/animal_local_ds.dart';
 import 'package:pet/data/data%20source/local/remote/animal_remote_ds.dart';
 import 'package:pet/data/models/animal_model.dart';
 import 'package:pet/domain/entities/animal.dart';

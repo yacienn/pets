@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet/core/network/api_client.dart';
-import 'package:pet/data/data%20source/local/animal_local_ds.dart';
+import 'package:pet/data/data%20source/local/local/animal_local_ds.dart';
 import 'package:pet/data/data%20source/local/remote/animal_remote_ds.dart';
 import 'package:pet/data/repo/animal_repo_impl.dart';
 import 'package:pet/domain/usecases/animal_usecases.dart';
@@ -20,6 +20,8 @@ void main() {
   final getRecentAnimals =
       GetRecentAnimalUseCases(repository);
 
+  final addAnimal =
+       addAnimalUseCases(repository);
   runApp(
     MultiProvider(
       providers: [
@@ -27,6 +29,7 @@ void main() {
           create: (_) => HomeVm(
             getAnimalTypes,
             getRecentAnimals,
+            addAnimal
           ),
         ),
       ],

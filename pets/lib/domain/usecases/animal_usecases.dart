@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:pet/domain/entities/animal.dart';
 import 'package:pet/domain/entities/animal_type.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pet/core/theme/colors.dart';
 import 'package:pet/presentation/home/viewmodel/home_vm.dart';
+import 'package:pet/widgets/animal_alertdialog.dart';
 import 'package:pet/widgets/animal_card.dart';
 import 'package:pet/widgets/animal_type_card.dart';
 import 'package:provider/provider.dart';
@@ -82,6 +83,15 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
+
+      floatingActionButton: FloatingActionButton(onPressed: () {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const AddAnimalDialog();
+      },
+    );
+  }, child: Icon(Icons.add),),
     );
   }
 }

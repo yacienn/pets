@@ -6,7 +6,10 @@ import 'package:pet/domain/usecases/animal_usecases.dart';
 class HomeVm extends ChangeNotifier {
   final GetRecentAnimalUseCases _getRecentAnimalUseCases;
   final getAnimalTypeUseCases _getAnimalUseCases;
-  HomeVm(this._getAnimalUseCases, this._getRecentAnimalUseCases);
+  final addAnimalUseCases _addAnimalUsecases ;
+
+
+  HomeVm(this._getAnimalUseCases, this._getRecentAnimalUseCases , this._addAnimalUsecases);
   List<AnimalType> animalType = [];
   List<Animal> animal = [];
   Future<void> load() async {
@@ -19,4 +22,7 @@ class HomeVm extends ChangeNotifier {
     }
     notifyListeners();
   }
+  Future<void> add(Animal animal)async{
+     await _addAnimalUsecases.call(animal);
+       }
 }

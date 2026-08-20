@@ -19,4 +19,11 @@ class AnimalModel {
       iconUrl: json['icon_url'],
     );
   }
+    Map<String, dynamic> toJson() {
+    return {
+      'name': name,
+      'type': type,
+      'iconUrl': iconUrl,
+    };
+  }
 }

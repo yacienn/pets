@@ -1,4 +1,3 @@
-import 'package:pet/domain/entities/animal_type.dart';
 
 class Animal {
   final String id;
