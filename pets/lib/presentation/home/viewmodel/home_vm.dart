@@ -4,7 +4,7 @@ import 'package:pet/domain/entities/animal_type.dart';
 import 'package:pet/domain/usecases/animal_usecases.dart';
 
 class HomeVm extends ChangeNotifier {
-  final GetRecentAnimalUseCases _getRecentAnimalUseCases;
+  final getAllAnimalsUserCases _getRecentAnimalUseCases;
   final getAnimalTypeUseCases _getAnimalUseCases;
   final addAnimalUseCases _addAnimalUsecases ;
 

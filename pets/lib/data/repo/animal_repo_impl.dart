@@ -14,10 +14,10 @@ class AnimalRepoImpl implements AnimalRepo {
     this.remoteDs,
   );
 
+
   @override
   Future<List<AnimalType>> getAnimalType() async {
     final models = await localDataSource.getAnimalTypes();
-
     return models
         .map(
           (m) => AnimalType(
@@ -28,10 +28,10 @@ class AnimalRepoImpl implements AnimalRepo {
         .toList();
   }
 
+
   @override
   Future<List<Animal>> getRecentAnimal() async {
     final models = await localDataSource.getRecentAnimals();
-
     return models
         .map(
           (m) => Animal(
@@ -44,6 +44,7 @@ class AnimalRepoImpl implements AnimalRepo {
         .toList();
   }
 
+
   @override
   Future<Animal> addAnimal(Animal animal) async {
     final model = AnimalModel(
@@ -52,9 +53,7 @@ class AnimalRepoImpl implements AnimalRepo {
       type: animal.type,
       iconUrl: animal.icon_url,
     );
-
     final result = await remoteDs.addAnimalTodb(model);
-
     return Animal(
       id: result.id,
       name: result.name,
@@ -62,4 +61,22 @@ class AnimalRepoImpl implements AnimalRepo {
       icon_url: result.iconUrl,
     );
   }
+
+
+@override 
+Future<List<Animal>> getAllAnimals()async{
+  final result = await remoteDs.getAllAnimalsFromdb();
+  return result
+        .map(
+          (m) => Animal(
+            id: m.id,
+            name: m.name,
+            type: m.type,
+            icon_url: m.iconUrl,
+          ),
+        )
+        .toList();
+}
+
+
 }

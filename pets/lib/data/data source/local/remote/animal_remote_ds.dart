@@ -5,7 +5,6 @@ import 'package:pet/data/models/animal_model.dart';
 
 class AnimalRemoteDs {
   final ApiClient apiClient;
-
   AnimalRemoteDs(this.apiClient);
 
   Future<AnimalModel> addAnimalTodb(AnimalModel animal) async {
@@ -19,9 +18,10 @@ class AnimalRemoteDs {
     );
   }
 
+
+
   Future<List<AnimalModel>> getAllAnimalsFromdb() async {
   final result = await apiClient.get('/animal');
-
   final List<dynamic> animals = result['animals'];
 
   return animals

@@ -18,7 +18,7 @@ void main() {
       getAnimalTypeUseCases(repository);
 
   final getRecentAnimals =
-      GetRecentAnimalUseCases(repository);
+      getAllAnimalsUserCases(repository);
 
   final addAnimal =
        addAnimalUseCases(repository);

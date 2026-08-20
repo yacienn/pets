@@ -27,3 +27,11 @@ class addAnimalUseCases{
   return result ;
   }
 }
+class getAllAnimalsUserCases{
+  final AnimalRepo repo ;
+  getAllAnimalsUserCases(this.repo );
+  Future<List<Animal>> call()async{
+  final result = await repo.getAllAnimals();
+   return result ;
+  }
+}

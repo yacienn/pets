@@ -5,4 +5,5 @@ abstract class AnimalRepo {
   Future<List<AnimalType>> getAnimalType();
   Future<List<Animal>> getRecentAnimal();
   Future<Animal> addAnimal(Animal animal);
+  Future<List<Animal>> getAllAnimals();
 }
