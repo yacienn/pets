@@ -14,8 +14,8 @@ class AnimalModel {
   factory AnimalModel.fromJson(Map<String, dynamic> json) {
     return AnimalModel(
       id: json['id'].toString(),
-      name: json['animal_name'],
-      type: json['animal_type'],
+      name: json['name'],
+      type: json['type'],
       iconUrl: json['icon_url'],
     );
   }

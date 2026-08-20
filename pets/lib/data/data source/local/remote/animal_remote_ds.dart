@@ -10,7 +10,7 @@ class AnimalRemoteDs {
 
   Future<AnimalModel> addAnimalTodb(AnimalModel animal) async {
     final result = await apiClient.post(
-      '/home/animal',
+      '/animal',
       animal.toJson(),
     );
 

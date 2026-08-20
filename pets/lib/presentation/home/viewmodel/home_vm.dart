@@ -13,16 +13,19 @@ class HomeVm extends ChangeNotifier {
   List<AnimalType> animalType = [];
   List<Animal> animal = [];
   Future<void> load() async {
-    try {
-      final types = await _getAnimalUseCases();
-      final recent = await _getRecentAnimalUseCases();
-      animalType = types ; 
-      animal = recent ;
-    } catch (e) {
-    }
-    notifyListeners();
+  try {
+    final types = await _getAnimalUseCases();       // ①
+    final recent = await _getRecentAnimalUseCases(); // ②
+    animalType = types;   // ← only runs if ② succeeds
+    animal = recent;
+  } catch (e) {
+    print("${e}");
   }
-  Future<void> add(Animal animal)async{
-     await _addAnimalUsecases.call(animal);
-       }
+  notifyListeners();
+}
+ Future<void> add(Animal animal) async {
+  final newAnimal = await _addAnimalUsecases.call(animal);
+  this.animal.add(newAnimal);
+  notifyListeners();
+}
 }

@@ -22,7 +22,7 @@ class AnimalRepoImpl implements AnimalRepo {
         .map(
           (m) => AnimalType(
             type: m.type,
-            icon_path: m.icon_path,
+            icon_path: m.icon_url,
           ),
         )
         .toList();
@@ -38,7 +38,7 @@ class AnimalRepoImpl implements AnimalRepo {
             id: m.id,
             name: m.name,
             type: m.type,
-            iconUrl: m.iconUrl,
+            icon_url: m.iconUrl,
           ),
         )
         .toList();
@@ -50,7 +50,7 @@ class AnimalRepoImpl implements AnimalRepo {
       id: animal.id,
       name: animal.name,
       type: animal.type,
-      iconUrl: animal.iconUrl,
+      iconUrl: animal.icon_url,
     );
 
     final result = await remoteDs.addAnimalTodb(model);
@@ -59,7 +59,7 @@ class AnimalRepoImpl implements AnimalRepo {
       id: result.id,
       name: result.name,
       type: result.type,
-      iconUrl: result.iconUrl,
+      icon_url: result.iconUrl,
     );
   }
 }

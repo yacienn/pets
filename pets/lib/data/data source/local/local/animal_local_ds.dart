@@ -11,7 +11,7 @@ abstract class AnimalLocalDataSource {
 /// then parsed through Model.fromJson() -- exactly like it would be if this
 /// were reading a bundled .json file or a SQLite query result.
 class AnimalLocalDataSourceImpl implements AnimalLocalDataSource {
-  static final List<Map<String, dynamic>> _animalTypesJson = [
+  static final List<Map<String, dynamic>> animalTypesJson = [
     {'animal_type': 'Cat', 'icon_url': 'assets/pet_icons/cat.png'},
     {'animal_type': 'Dog', 'icon_url': 'assets/pet_icons/dog.png'},
     {'animal_type': 'Bird', 'icon_url': 'assets/pet_icons/bird.png'},
@@ -37,7 +37,7 @@ class AnimalLocalDataSourceImpl implements AnimalLocalDataSource {
 
   @override
   Future<List<AnimaleTypeModel>> getAnimalTypes() async {
-    return _animalTypesJson
+    return animalTypesJson
         .map((json) => AnimaleTypeModel.fromJson(json))
         .toList();
   }

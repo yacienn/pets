@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pet/core/theme/colors.dart';
+import 'package:pet/domain/entities/animal.dart';
 import 'package:pet/presentation/home/viewmodel/home_vm.dart';
 import 'package:pet/widgets/animal_alertdialog.dart';
 import 'package:pet/widgets/animal_card.dart';
@@ -17,8 +18,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    // Provider isn't ready during initState's build phase, so defer to
-    // after the first frame.
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<HomeVm>().load();
     });
@@ -29,9 +28,7 @@ class _HomePageState extends State<HomePage> {
     final HomeVm homevm = Provider.of<HomeVm>(context);
     return Scaffold(
       backgroundColor: AppColors.primaryBackground,
-      drawer: Drawer(
-        backgroundColor: AppColors.primaryBackground,
-      ),
+      drawer: Drawer(backgroundColor: AppColors.primaryBackground),
       appBar: AppBar(
         title: const Text("Pets"),
         centerTitle: true,
@@ -69,11 +66,11 @@ class _HomePageState extends State<HomePage> {
                   : GridView.builder(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 12,
-                        crossAxisSpacing: 12,
-                        childAspectRatio: 0.85,
-                      ),
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 12,
+                            crossAxisSpacing: 12,
+                            childAspectRatio: 0.85,
+                          ),
                       itemCount: homevm.animal.length,
                       itemBuilder: (context, index) {
                         return AnimalCard(animal: homevm.animal[index]);
@@ -84,14 +81,27 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
-      floatingActionButton: FloatingActionButton(onPressed: () {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const AddAnimalDialog();
-      },
-    );
-  }, child: Icon(Icons.add),),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          try{
+             final Animal? data = await showAdaptiveDialog(
+            context: context,
+            builder: (context) {
+              return const AddAnimalDialog();
+            },
+          );
+          if (data == null) {
+            return;
+          }
+          
+          await context.read<HomeVm>().add(data);
+          }catch(e){
+            SnackBar(content: Text("error $e"));
+          }
+          
+        },
+        child: Icon(Icons.add),
+      ),
     );
   }
 }

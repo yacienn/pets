@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiClient {
-  final String baseUrl = 'http://10.0.2.2:3000/api';
+  final String baseUrl = 'http://localhost:3000/home';
   Future<Map<String,dynamic>> post(
     String endpoint , Map<String,dynamic> body,
   )async{

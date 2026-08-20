@@ -3,12 +3,12 @@ class Animal {
   final String id;
   final String name;
   final String type;
-  final String iconUrl;
+  final String icon_url;
 
   const Animal({
     required this.id,
     required this.name,
     required this.type,
-    required this.iconUrl,
+    required this.icon_url,
   });
 }

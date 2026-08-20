@@ -32,7 +32,7 @@ class AnimalCard extends StatelessWidget {
             child: Column(
               children: [
                 Image.asset(
-                  animal.iconUrl,
+                  animal.icon_url,
                   width: double.infinity,
                   height: 110,
                   fit: BoxFit.contain,
