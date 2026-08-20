@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { pool } from "../config/db.js";
+import { Result } from "pg";
 
 export const addAnimal = async (req: Request, res: Response) => {
   try {
@@ -29,6 +30,27 @@ export const addAnimal = async (req: Request, res: Response) => {
 
     return res.status(500).json({
       message: "Failed to add animal",
+    });
+  }
+};
+
+export const GetallAnimals = async (req: Request, res: Response) => {
+  try {
+    const response = await pool.query(
+      `
+      SELECT *
+      FROM animal
+      ORDER BY id DESC
+      `
+    );
+    return res.status(200).json({
+      animals: response.rows,
+    });
+  } catch (e) {
+    console.error("GET ANIMALS ERROR:", e);
+
+    return res.status(500).json({
+      message: "Failed to get animals",
     });
   }
 };
