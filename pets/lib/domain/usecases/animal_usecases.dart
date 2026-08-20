@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:pet/domain/entities/animal.dart';
 import 'package:pet/domain/entities/animal_type.dart';
 import 'package:pet/domain/repositories/animal_repo.dart';
@@ -15,5 +17,14 @@ class getAnimalTypeUseCases{
   getAnimalTypeUseCases(this.repo);
   Future<List<AnimalType>> call(){
     return repo.getAnimalType();
+  }
+}
+
+class addAnimalUseCases{
+  final AnimalRepo repo ;
+  addAnimalUseCases(this.repo , );
+  Future<Animal> call(Animal animal)async{
+  final result = await repo.addAnimal(animal);
+  return result ;
   }
 }
